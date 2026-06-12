@@ -8,7 +8,7 @@ export default defineConfig({
 	integrations: [
 		starlight({
 			title: 'Mobiler',
-			description: 'Build native iOS, Android and web apps from one Rust core.',
+			description: 'Build native iOS & Android apps from one Rust core — and share most of it on the web.',
 			social: [{ icon: 'github', label: 'GitHub', href: 'https://github.com/mobiler/mobiler' }],
 			sidebar: [
 				{ label: 'Start here', items: [{ label: 'Quickstart', slug: 'quickstart' }] },

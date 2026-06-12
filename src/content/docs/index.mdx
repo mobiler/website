@@ -1,9 +1,9 @@
 ---
 title: Mobiler
-description: Build native iOS, Android and web apps from one Rust core.
+description: Build native iOS & Android apps from one Rust core — and share most of it on the web.
 template: splash
 hero:
-  tagline: One Rust core. Native iOS, Android and web — no glue, no rewrites.
+  tagline: One Rust core → native iOS & Android. Share most of it on the web, too.
   actions:
     - text: Build a real app
       link: /guide/
@@ -22,14 +22,19 @@ import { Card, CardGrid } from '@astrojs/starlight/components';
 
 ## Write it once, in Rust
 
-You write a single `MobilerApp` — typed `Model`, `Msg`, `update`, `view` — and Mobiler renders it
-**natively**: SwiftUI on iOS, Jetpack Compose on Android, and the DOM on the web. The same core,
-three real native shells. No webview, no per-platform UI code.
+You write a single `MobilerApp` — typed `Model`, `Msg`, `update`, `view`. On mobile, Mobiler renders it
+**natively**: SwiftUI on iOS and Jetpack Compose on Android — real native controls, no webview. The same
+core also drives a **web build** (Leptos + WebAssembly) that shares most of the UI: a real browser app
+from the same code, if not a pixel-for-pixel match.
 
 <CardGrid>
-	<Card title="One core, three platforms" icon="laptop">
-		A `Widget` tree out, typed state in. The shells map it to native controls — so your app
-		looks and feels native everywhere from day one.
+	<Card title="Native on iOS & Android" icon="laptop">
+		A `Widget` tree out, typed state in. The shells map it to real native controls on both — native
+		look and feel from day one, no per-platform UI code.
+	</Card>
+	<Card title="Plus a shared web build" icon="open-book">
+		The same Rust core runs in the browser via Leptos + WebAssembly (a Tauri target is on the
+		roadmap) — share most of your app to the web without aiming for 100% parity.
 	</Card>
 	<Card title="Batteries included" icon="puzzle">
 		SQLite, files, the camera, biometrics, charts, maps, push, localization and more — built-in
@@ -56,5 +61,5 @@ fn view(&self, model: &Model) -> Widget {
 }
 ```
 
-That `view` runs unchanged on all three platforms. Ready to build something real?
-**[Start the guide →](/guide/)**
+That `view` runs natively on iOS and Android — and in the browser via the web build. Ready to build
+something real? **[Start the guide →](/guide/)**

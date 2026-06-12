@@ -84,8 +84,8 @@ sidebar:
   order: 1
 ---
 
-Every capability below is **built in and free**, callable from your Rust core via \`cx\` and rendered
-natively on iOS, Android and the web. This table is generated from the framework's
+Every capability below is **built in and free**, callable from your Rust core via \`cx\` — native on
+iOS and Android, and on the web where supported. This table is generated from the framework's
 [\`capabilities.json\`](${GH}/capabilities.json), so it never drifts.
 
 | Capability | API | Plugin | Status | Since | Notes |

@@ -27,15 +27,18 @@ platform.
 
 ## Run it
 
-```sh
-# Web (fastest loop — opens in your browser)
-mobiler dev web
+iOS and Android are the native targets; the web build (Leptos + WebAssembly) shares most of the UI and
+is the fastest loop for day-to-day iteration — though not every screen is a pixel-for-pixel match.
 
+```sh
 # iOS (needs Xcode)
 mobiler build ios
 
 # Android (needs the Android SDK/NDK)
 mobiler build android
+
+# Web — fastest dev loop, opens in your browser
+mobiler dev web
 ```
 
 ## Add a capability
