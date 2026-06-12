@@ -1,0 +1,60 @@
+---
+title: Mobiler
+description: Build native iOS, Android and web apps from one Rust core.
+template: splash
+hero:
+  tagline: One Rust core. Native iOS, Android and web — no glue, no rewrites.
+  actions:
+    - text: Build a real app
+      link: /guide/
+      icon: right-arrow
+    - text: Quickstart
+      link: /quickstart/
+      icon: rocket
+      variant: minimal
+    - text: GitHub
+      link: https://github.com/mobiler/mobiler
+      icon: external
+      variant: minimal
+---
+
+import { Card, CardGrid } from '@astrojs/starlight/components';
+
+## Write it once, in Rust
+
+You write a single `MobilerApp` — typed `Model`, `Msg`, `update`, `view` — and Mobiler renders it
+**natively**: SwiftUI on iOS, Jetpack Compose on Android, and the DOM on the web. The same core,
+three real native shells. No webview, no per-platform UI code.
+
+<CardGrid>
+	<Card title="One core, three platforms" icon="laptop">
+		A `Widget` tree out, typed state in. The shells map it to native controls — so your app
+		looks and feels native everywhere from day one.
+	</Card>
+	<Card title="Batteries included" icon="puzzle">
+		SQLite, files, the camera, biometrics, charts, maps, push, localization and more — built-in
+		capabilities you call from Rust with `cx`. See the [reference](/reference/capabilities/).
+	</Card>
+	<Card title="Pure, testable logic" icon="approve-check">
+		Your app is a pure state machine: events in, a view out. Unit-test the whole thing in plain
+		Rust, with no simulator in sight.
+	</Card>
+	<Card title="Ship to the stores" icon="rocket">
+		Scaffold, run on a device, and ship to the App Store and Google Play — the
+		[guide](/guide/) takes a real money-manager app all the way there.
+	</Card>
+</CardGrid>
+
+## See it in one screen
+
+```rust
+fn view(&self, model: &Model) -> Widget {
+    scaffold("Saldo", model.dark, tabs(model), column(vec![
+        card(text(money(model, model.balance)), CardStyle::Filled),
+        button("Add", ButtonStyle::Filled, Msg::StartAdd),
+    ]))
+}
+```
+
+That `view` runs unchanged on all three platforms. Ready to build something real?
+**[Start the guide →](/guide/)**

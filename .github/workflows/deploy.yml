@@ -1,0 +1,56 @@
+name: Deploy to GitHub Pages
+
+# Builds the Starlight site and publishes it to GitHub Pages. The guide + capabilities reference are
+# synced at build time from the framework repo (mobiler/mobiler) — see scripts/sync-content.mjs — so
+# the published docs always match the latest framework. Re-runs on push here or via "Run workflow".
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the website
+        uses: actions/checkout@v4
+
+      - name: Check out the framework repo (content source)
+        uses: actions/checkout@v4
+        with:
+          repository: mobiler/mobiler
+          path: mobiler
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - run: npm ci
+      - name: Build (sync content from the framework repo, then Astro build)
+        run: npm run build
+        env:
+          MOBILER_REPO: ${{ github.workspace }}/mobiler
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4
